@@ -67,6 +67,7 @@ while true do
   write(" $ ")
   local command = read(nil, cmdHistory)
   table.insert(cmdHistory, command)
+  term.setTextColor(colors.white)
   if command == "exit" then
     break
   else if command == "" then
