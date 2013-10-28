@@ -20,6 +20,12 @@ dir = homeDir
 
 --everything initialized, let's have FUN!
 
+function colorText(color)
+if term.isColor() then
+ term.setTextColor(color)
+end
+end
+
 local function findFile(path)
   if fs.exists(dir..path) then
     return true, dir..path
@@ -49,21 +55,13 @@ while true do
   else
     lbl = os.computerID()
   end
-  if term.isColor() then
-   term.setTextColor(colors.yellow)
-  end
+  colorText(colors.yellow)
   write("root@")
-  if term.isColor() then
-   term.setTextColor(colors.green)
-  end
+  colorText(colors.green)
   write(lbl)
-  if term.isColor() then
-   term.setTextColor(colors.red)
-  end
-  write(" /"..dir)
-  if term.isColor() then
-   term.setTextColor(colors.blue)
-  end
+  colorText(colors.red)
+  write(" /"..shell.dir())
+  colorText(colors.blue)
   write(" $ ")
   local command = read(nil, cmdHistory)
   table.insert(cmdHistory, command)
